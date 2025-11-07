@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Examples: Inline, Embedded, External</title>
+
+    <!-- External stylesheet (create styles.css in the same folder) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Embedded / internal styles -->
+    <style>
+        /* Embedded (internal) styles */
+        .embedded-box {
+            background: #e3f2fd;
+            border: 2px solid #90caf9;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* A shared class to demonstrate cascade/precedence */
+        .shared {
+            font-weight: 600;
+            color: #1e88e5; /* will be overridden by inline if inline sets color */
+        }
+    </style>
+</head>
+<body>
+    <main style="max-width:800px;margin:2rem auto;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;">
+        <h1>CSS Examples: Inline, Embedded, External</h1>
+
+        <section>
+            <h2>External stylesheet</h2>
+            <p class="external-box shared">
+                This paragraph is styled by the external stylesheet (styles.css). Create a file named
+                <code>styles.css</code> beside this HTML file to see the external styles applied.
+            </p>
+        </section>
+
+        <section>
+            <h2>Embedded (internal) &lt;style&gt; block</h2>
+            <p class="embedded-box shared">
+                This paragraph is styled by the embedded &lt;style&gt; block inside this document.
+            </p>
+        </section>
+
+        <section>
+            <h2>Inline style (style attribute)</h2>
+            <p class="embedded-box shared" style="background:#fff3e0;border-color:#ffb74d;color:#e65100;">
+                This paragraph uses an inline style. Inline styles have the highest priority for the properties they set,
+                so the inline color overrides the embedded/external color.
+            </p>
+        </section>
+
+        <section>
+            <h2>Precedence demo</h2>
+            <p class="shared" style="color:crimson;">
+                Inline color (crimson) — overrides embedded/external color.
+            </p>
+            <p class="shared">
+                Embedded color (blue) — used when not overridden by inline.
+            </p>
+            <p class="external-box">
+                External-only styling (see styles.css) — used when no embedded/inline overrides apply.
+            </p>
+        </section>
+
+        <hr>
+        <small>Suggested contents for <code>styles.css</code> (create this file next to the HTML):</small>
+        <pre>
+/* styles.css */
+.external-box {
+    background: #e8f5e9;
+    border: 2px dashed #66bb6a;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+.shared {
+    color: #2e7d32;
+}
+        </pre>
+    </main>
+</body>
+</html>

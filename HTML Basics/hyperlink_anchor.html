@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hyperlinks vs Anchors — Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height: 1.5; margin: 0; padding: 1rem; color: #111; }
+        header { display:flex; gap:1rem; align-items:center; margin-bottom:1rem; }
+        h1 { margin: 0; font-size:1.25rem; }
+        .card { border:1px solid #ddd; padding:1rem; border-radius:8px; background:#fff; box-shadow: 0 1px 3px rgba(0,0,0,.03); }
+        nav a { color: #0366d6; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        .example { margin-top:1rem; display:grid; gap:1rem; }
+        .anchor-sections section { padding:1.5rem; border-radius:6px; margin-bottom:1rem; background:#fafafa; min-height:70vh; border:1px solid #eee; }
+        .toc { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .toc a { padding:.35rem .6rem; background:#f1f8ff; border-radius:6px; border:1px solid #ddeeff; color:#0366d6 }
+        /* visually emphasize the currently-targeted anchor */
+        :target { outline: 3px solid #ffd33d; border-radius:6px; box-shadow: 0 3px 18px rgba(0,0,0,.06); background: #fffef6; }
+        .small { font-size:.95rem; color:#444; }
+        footer { margin-top:1.5rem; font-size:.9rem; color:#666; }
+    </style>
+</head>
+<body>
+    <a id="top"></a>
+    <header>
+        <h1>Hyperlinks vs Anchors — Demo</h1>
+    </header>
+
+    <div class="example card">
+        <section>
+            <h2>1) Hyperlinks (navigate between pages)</h2>
+            <p class="small">These links point to different pages. In a real site you'd create separate files like <code>home.html</code> and <code>about.html</code>. Clicking them loads another page (or tab).</p>
+            <nav>
+                <!-- Example hyperlinks to other pages -->
+                <a href="home.html" target="_blank" rel="noopener">Home (home.html)</a>
+                &nbsp;•&nbsp;
+                <a href="about.html" target="_blank" rel="noopener">About Us (about.html)</a>
+            </nav>
+            <p class="small">Tip: open those files in your editor or browser to see separate pages. If the files don't exist yet, create them and the links will work as normal hyperlinks.</p>
+        </section>
+
+        <section>
+            <h2>2) Anchors (jump inside the same page)</h2>
+            <p class="small">Anchors use fragment identifiers (hashes) to jump to elements that have matching <code>id</code> attributes on the same page.</p>
+
+            <div class="toc" aria-label="Table of contents">
+                <a href="#section-intro">Intro</a>
+                <a href="#section-features">Features</a>
+                <a href="#section-contact">Contact</a>
+                <a href="#top">Back to top</a>
+            </div>
+
+            <div class="anchor-sections" style="margin-top:1rem;">
+                <section id="section-intro">
+                    <h3>Intro</h3>
+                    <p>This section demonstrates scrolling to a location within the same document using an anchor link.</p>
+                    <p class="small">When you click a link such as <code>#section-features</code> the browser will scroll to the element that has <code>id="section-features"</code>.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero?</p>
+                </section>
+
+                <section id="section-features">
+                    <h3>Features</h3>
+                    <p>Make sections tall enough to clearly see the jump and the page scroll. The :target CSS pseudo-class is used above to highlight the focused anchor target.</p>
+                    <p class="small">You can add "Back to top" links inside each section for convenience:</p>
+                    <p><a href="#top">Back to top</a></p>
+
+                    <!-- Add lots of content to ensure scrolling -->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, repellendus. Repellat, facilis. Voluptatum, dolores repellendus. Tempore, perspiciatis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, aperiam.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, nostrum!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, rerum.</p>
+                </section>
+
+                <section id="section-contact">
+                    <h3>Contact</h3>
+                    <p>Contact details or any other content you want to jump to quickly from the table of contents.</p>
+                    <p class="small">Try clicking the TOC links above to see the page scroll and the yellow outline around the targeted section.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, obcaecati.</p>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <footer class="small">
+        Quick summary: hyperlinks (without a hash) navigate between pages/files. Anchors (links with #fragment) jump to elements on the same page that have matching ids.
+    </footer>
+</body>
+</html>
